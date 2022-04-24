@@ -6,17 +6,27 @@ import { useInput } from '../utils/useInput'
 export const FormFields = (props) => {
   const {} = props
 
-  const { handleSubmit, values } = useInput
+  const { handleSubmit, values } = useInput()
 
   return (
-    <div className='form--wrapper'>
-      <form onSubmit={handleSubmit}>
+    <div>
+      <form className='form--wrapper' onSubmit={handleSubmit}>
+        <div className='form--text'>
+          <div className='header--wrapper'>
+            <span>Let's</span>
+            <h1>Sign Up</h1>
+          </div>
+          <p>
+            Use the form below to sign up for this super awesome service.
+            You're only a few steps away!
+          </p>
+        </div>
         <Input
           htmlFor='firstName'
           inputClass=''
           labelClass=''
           labelId='firstName'
-          labelText='First name'
+          labelText='First Name'
           name='firstName'
           type='text'
           value={values.firstName}
@@ -26,7 +36,7 @@ export const FormFields = (props) => {
           inputClass=''
           labelClass=''
           labelId='email'
-          labelText='Email'
+          labelText='Email Address'
           name='email'
           type='email'
           value={values.email}
@@ -41,7 +51,7 @@ export const FormFields = (props) => {
           type='password'
           value={values.password}
         />
-        <Button className='button--submit'>Submit</Button>
+        <Button className='button--submit'>Sign Up</Button>
       </form>
     </div>
   )
