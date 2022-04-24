@@ -17,7 +17,7 @@ export const Input = (props) => {
 
   return (
     <div className='composed-input'>
-      <label className={labelClass} htmlFor={htmlFor}>
+      <label className={`input--label ${labelClass}`} htmlFor={htmlFor}>
         {labelText}
       </label>
       <input
