@@ -1,6 +1,4 @@
-let errors = {}
-
-export const validateName = (values) => {
+export const validateName = (values, errors) => {
   // valid first name examples:
   // Juan Ignacio
   // Jean-Luc
@@ -11,16 +9,11 @@ export const validateName = (values) => {
     if (values.firstName.trim()) {
       errors.firstName = 'Please provide your first name.'
     } else if (!regex.test(values.firstName)) {
-      errors.firstName = `First names can only contain:
-        \s• letters
-        \s• hyphens
-        \s• apostrophes
-        \s• spaces
-        \s• 25 characters total.`
+      errors.firstName = 'First names can only contain letters, hyphens, apostrophes, spaces, and 25 characters total.'
     }
 }
 
-export const validateEmail = (values) => {
+export const validateEmail = (values, errors) => {
   // Willful violation of RFC 5322 to accept addresses valid in real-world use
   // For more info: https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address 
   const regex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
@@ -33,17 +26,27 @@ export const validateEmail = (values) => {
   }
 }
 
-export const validatePassword = (values) => {
+export const validatePassword = (values, errors) => {
   const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,64}$/i
 
   if (!values.password) {
     errors.password = 'Please create a password.'
   } else if (!regex.test(values.password)) {
-    errors.password = `Password must contain at least:
-      \s• eight characters (and 64 max)
-      \s• one uppercase letter
-      \s• one lowercase letter
-      \s• one digit
-      \s• and one special character.`
+    errors.password = `Password must contain at least:\n
+      \n• eight characters (and 64 max)
+      \n• one uppercase letter
+      \n• one lowercase letter
+      \n• one digit
+      \n• and one special character.`
   }
+}
+
+export const validateFields = (values) => {
+  let errors = {}
+
+  validateName(values, errors)
+  validateEmail(values, errors)
+  validatePassword(values, errors)
+  
+  return errors
 }

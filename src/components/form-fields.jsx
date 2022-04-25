@@ -1,3 +1,4 @@
+import { validateFields } from '../utils/validation'
 import React from 'react'
 import { Input } from './input'
 import { Button } from './button'
@@ -5,8 +6,7 @@ import { useInput } from '../utils/useInput'
 
 export const FormFields = (props) => {
   const {} = props
-
-  const { handleSubmit, values } = useInput()
+  const { errors, handleSubmit } = useInput(validateFields)
 
   return (
     <div>
@@ -21,37 +21,31 @@ export const FormFields = (props) => {
             You're only a few steps away!
           </p>
         </div>
+        {errors.firstName && <p>{errors.firstName}</p>}
         <Input
-          htmlFor='firstName'
+          field='firstName'
           inputClass=''
           labelClass=''
-          labelId='firstName'
           labelText='First Name'
-          name='firstName'
           type='text'
-          value={values.firstName}
         />
+        {errors.email && <p>{errors.email}</p>}
         <Input
-          htmlFor='email'
+          field='email'
           inputClass=''
           labelClass=''
-          labelId='email'
           labelText='Email Address'
-          name='email'
           type='email'
-          value={values.email}
         />
+        {errors.password && <p>{errors.password}</p>}
         <Input
-          htmlFor='password'
+          field='password'
           inputClass=''
           labelClass=''
-          labelId='password'
           labelText='Password'
-          name='password'
           type='password'
-          value={values.password}
         />
-        <Button className='button--submit'>Sign Up</Button>
+        <Button className='button--submit' onSubmit={handleSubmit}>Sign Up</Button>
       </form>
     </div>
   )
