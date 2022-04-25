@@ -1,8 +1,8 @@
-import { validateFields } from '../utils/validation'
 import React from 'react'
 import { Input } from './input'
 import { Button } from './button'
 import { useInput } from '../utils/useInput'
+import { validateFields } from '../utils/validation'
 
 export const FormFields = (props) => {
   const {} = props
@@ -24,28 +24,22 @@ export const FormFields = (props) => {
         {errors.firstName && <p className='form--error'>{errors.firstName}</p>}
         <Input
           field='firstName'
-          inputClass=''
-          labelClass=''
           labelText='First Name'
           type='text'
         />
         {errors.email && <p className='form--error'>{errors.email}</p>}
         <Input
           field='email'
-          inputClass=''
-          labelClass=''
           labelText='Email Address'
           type='email'
         />
         {errors.password && <p className='form--error'>{errors.password}</p>}
         <Input
           field='password'
-          inputClass=''
-          labelClass=''
           labelText='Password'
           type='password'
         />
-        <Button className='button--submit' onSubmit={handleSubmit}>Sign Up</Button>
+        <Button onSubmit={handleSubmit}>Sign Up</Button>
       </form>
     </div>
   )

@@ -2,9 +2,8 @@ import React from 'react'
 
 export const Button = (props) => {
   const {
-    children,
-    className
+    children
   } = props
 
-  return <button className={className}>{children}</button>
+  return <button className='button--submit'>{children}</button>
 }
