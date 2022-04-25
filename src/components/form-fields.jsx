@@ -21,7 +21,7 @@ export const FormFields = (props) => {
             You're only a few steps away!
           </p>
         </div>
-        {errors.firstName && <p>{errors.firstName}</p>}
+        {errors.firstName && <p className='form--error'>{errors.firstName}</p>}
         <Input
           field='firstName'
           inputClass=''
@@ -29,7 +29,7 @@ export const FormFields = (props) => {
           labelText='First Name'
           type='text'
         />
-        {errors.email && <p>{errors.email}</p>}
+        {errors.email && <p className='form--error'>{errors.email}</p>}
         <Input
           field='email'
           inputClass=''
@@ -37,7 +37,7 @@ export const FormFields = (props) => {
           labelText='Email Address'
           type='email'
         />
-        {errors.password && <p>{errors.password}</p>}
+        {errors.password && <p className='form--error'>{errors.password}</p>}
         <Input
           field='password'
           inputClass=''
