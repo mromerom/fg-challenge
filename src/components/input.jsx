@@ -1,31 +1,29 @@
+import { validateFields } from '../utils/validation'
 import React from 'react'
 import { useInput } from '../utils/useInput'
 
 export const Input = (props) => {
-  const { handleChange } = useInput
+  const { handleChange, values } = useInput(validateFields)
   
   const {
-    htmlFor,
+    field,
     inputClass,
     labelClass,
-    labelId,
     labelText,
-    inputValue,
-    name,
     type
   } = props
 
   return (
     <div className='composed-input'>
-      <label className={`input--label ${labelClass}`} htmlFor={htmlFor}>
+      <label className={`input--label ${labelClass}`} htmlFor={field}>
         {labelText}
       </label>
       <input
         className={inputClass}
-        id={labelId}
-        name={name}
+        id={field}
+        name={field}
         type={type}
-        value={inputValue}
+        value={values[field]}
         onChange={handleChange}
       />
     </div>

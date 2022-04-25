@@ -1,15 +1,13 @@
 import React from 'react'
 
-export const useInput = () => {
+export const useInput = (validate) => {
   const [values, setValues] = React.useState({
     firstName: '',
     email: '',
     password: '',
   })
 
-  const [errors, setErrors] = React.useState({
-
-  })
+  const [errors, setErrors] = React.useState({})
 
   const handleChange = event => {
 
@@ -23,7 +21,9 @@ export const useInput = () => {
 
   const handleSubmit = event => {
     event.preventDefault()
+
+    setErrors(validate(values))
   }
 
-  return { handleChange, handleSubmit, values }
+  return { errors, handleChange, handleSubmit, values }
 }
