@@ -46,6 +46,13 @@ html {
   line-height: 1.5;
 }
 
+.form--error {
+  color: red;
+  font-size: .75rem;
+  font-weight: 500;
+  margin-bottom: .5rem;
+}
+
 .input--label {
   font-size: 1rem;
   font-weight: bold;
