@@ -28,9 +28,10 @@ export const useInput = (callback, validate) => {
 
   React.useEffect(() => {
     // if there are no errors and we submit, revalidate inputs
-    if (Object.keys(errors).length === 0 && submission) callback()
-    // call when there are changes to errors
-  }, [errors])
+    if (Object.keys(errors).length === 0 && submission) {
+      callback()
+    }
+  }, [errors, callback, submission])
 
   return { errors, handleChange, handleSubmit, values }
 }

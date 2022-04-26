@@ -10,7 +10,7 @@ export const FormFields = ({submit}) => {
 
   return (
     <div>
-      <form className='form--wrapper' onSubmit={handleSubmit}>
+      <form className='form--wrapper' onSubmit={handleSubmit} noValidate>
         <div className='form--text'>
           <div className='header--wrapper'>
             <span>Let's</span>
@@ -22,38 +22,21 @@ export const FormFields = ({submit}) => {
           </p>
         </div>
         {errors.firstName && <p className='form--error'>{errors.firstName}</p>}
-        <div className='composed-input'>
-          <label className={`input--label`} htmlFor='firstName'>
-            First Name
-          </label>
-          <input
-            id='firstName'
-            name='firstName'
-            type='text'
-            value={values.firstName}
-            onChange={handleChange}
-          />
-        </div>
+        <Input
+          field='firstName'
+          labelText='First Name'
+          type='text'
+          value={values.firstName}
+          onChange={handleChange}
+        />
         {errors.email && <p className='form--error'>{errors.email}</p>}
-        {/* <Input
+        <Input
           field='email'
           labelText='Email Address'
           type='email'
           value={values.email}
           onChange={handleChange}
-        /> */}
-        <div className='composed-input'>
-          <label className={`input--label`} htmlFor='email'>
-            Email Address
-          </label>
-          <input
-            id='email'
-            name='email'
-            type='email'
-            value={values.email}
-            onChange={handleChange}
-          />
-        </div>
+        />
         {errors.password && <p className='form--error'>{errors.password}</p>}
         <Input
           field='password'
@@ -62,18 +45,6 @@ export const FormFields = ({submit}) => {
           value={values.password}
           onChange={handleChange}
         />
-        {/* <div className='composed-input'>
-          <label className={`input--label`} htmlFor='password'>
-            Password
-          </label>
-          <input
-            id='password'
-            name='password'
-            type='password'
-            value={values.password}
-            onChange={handleChange}
-          />
-        </div> */}
         <Button>Sign Up</Button>
       </form>
     </div>

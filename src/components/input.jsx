@@ -25,6 +25,7 @@ export const Input = (props) => {
         name={field}
         type={type}
         onChange={onChange}
+        value={value}
       />
     </div>
   )

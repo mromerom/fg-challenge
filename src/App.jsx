@@ -1,9 +1,9 @@
 import React from 'react'
-import './App.css';
-import { FormFields } from './components/form-fields'
+import './App.css'
+import { Form } from './components/form'
 
 export const App = () => {
   return (
-    <FormFields />
+    <Form />
   )
 }
