@@ -4,13 +4,13 @@ import { Button } from './button'
 import { useInput } from '../utils/useInput'
 import { validateFields } from '../utils/validation'
 
-export const FormFields = (props) => {
-  const {} = props
-  const { errors, handleSubmit } = useInput(validateFields)
+export const FormFields = ({submit}) => {
+  // const { submit } = props
+  const { errors, handleChange, handleSubmit, values } = useInput(submit, validateFields)
 
   return (
     <div>
-      <form className='form--wrapper' onSubmit={handleSubmit}>
+      <form className='form--wrapper' onSubmit={handleSubmit} noValidate>
         <div className='form--text'>
           <div className='header--wrapper'>
             <span>Let's</span>
@@ -26,20 +26,26 @@ export const FormFields = (props) => {
           field='firstName'
           labelText='First Name'
           type='text'
+          value={values.firstName}
+          onChange={handleChange}
         />
         {errors.email && <p className='form--error'>{errors.email}</p>}
         <Input
           field='email'
           labelText='Email Address'
           type='email'
+          value={values.email}
+          onChange={handleChange}
         />
         {errors.password && <p className='form--error'>{errors.password}</p>}
         <Input
           field='password'
           labelText='Password'
           type='password'
+          value={values.password}
+          onChange={handleChange}
         />
-        <Button onSubmit={handleSubmit}>Sign Up</Button>
+        <Button>Sign Up</Button>
       </form>
     </div>
   )

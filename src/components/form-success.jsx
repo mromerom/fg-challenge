@@ -3,9 +3,8 @@ import { Button } from './button'
 import { useInput } from '../utils/useInput'
 import { validateFields } from '../utils/validation'
 
-export const FormSuccess = (props) => {
-  const {} = props
-  const { values } = useInput(validateFields)
+export const FormSuccess = ({submit}) => {
+  const { values } = useInput(submit, validateFields)
 
   return (
     <div>

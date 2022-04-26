@@ -5,5 +5,5 @@ export const Button = (props) => {
     children
   } = props
 
-  return <button className='button--submit'>{children}</button>
+  return <button className='button--submit' type='submit'>{children}</button>
 }

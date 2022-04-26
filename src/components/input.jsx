@@ -3,14 +3,15 @@ import React from 'react'
 import { useInput } from '../utils/useInput'
 
 export const Input = (props) => {
-  const { handleChange, values } = useInput(validateFields)
   
   const {
     field,
     inputClass,
     labelClass,
     labelText,
-    type
+    type,
+    onChange,
+    value
   } = props
 
   return (
@@ -23,8 +24,8 @@ export const Input = (props) => {
         id={field}
         name={field}
         type={type}
-        value={values[field]}
-        onChange={handleChange}
+        onChange={onChange}
+        value={value}
       />
     </div>
   )
