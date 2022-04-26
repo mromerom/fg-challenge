@@ -3,14 +3,14 @@ import { Input } from './input'
 import { Button } from './button'
 import { useInput } from '../utils/useInput'
 import { validateFields } from '../utils/validation'
+import { SignupContext } from '../contexts/signup-context'
 
-export const FormFields = ({submit}) => {
-  // const { submit } = props
-  const { errors, handleChange, handleSubmit, values } = useInput(submit, validateFields)
+export const FormFields = () => {
+  const { email, setEmail, firstName, setFirstName, setPassword, handleSubmit, submit} = React.useContext(SignupContext)
 
   return (
     <div>
-      <form className='form--wrapper' onSubmit={handleSubmit} noValidate>
+      <form className='form--wrapper' onSubmit={handleSubmit}>
         <div className='form--text'>
           <div className='header--wrapper'>
             <span>Let's</span>
@@ -21,31 +21,36 @@ export const FormFields = ({submit}) => {
             You're only a few steps away!
           </p>
         </div>
-        {errors.firstName && <p className='form--error'>{errors.firstName}</p>}
+        {/* {errors.firstName && <p className='form--error'>{errors.firstName}</p>} */}
         <Input
           field='firstName'
           labelText='First Name'
           type='text'
-          value={values.firstName}
-          onChange={handleChange}
+          value={firstName}
+          onChange={event => {
+            setFirstName(event.target.value)
+          }}
         />
-        {errors.email && <p className='form--error'>{errors.email}</p>}
+        {/* {errors.email && <p className='form--error'>{errors.email}</p>} */}
         <Input
           field='email'
           labelText='Email Address'
           type='email'
-          value={values.email}
-          onChange={handleChange}
+          value={email}
+          onChange={event => {
+            setEmail(event.target.value)
+          }}
         />
-        {errors.password && <p className='form--error'>{errors.password}</p>}
+        {/* {errors.password && <p className='form--error'>{errors.password}</p>} */}
         <Input
           field='password'
           labelText='Password'
           type='password'
-          value={values.password}
-          onChange={handleChange}
+          onChange={event => {
+            setPassword(event.target.value)
+          }}
         />
-        <Button>Sign Up</Button>
+        <Button onClick={event => submit(event)}>Sign Up</Button>
       </form>
     </div>
   )

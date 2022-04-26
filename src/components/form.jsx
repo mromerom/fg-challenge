@@ -1,21 +1,41 @@
 import React from 'react'
 import { FormFields } from './form-fields'
 import { FormSuccess } from './form-success'
+import { SignupContext } from '../contexts/signup-context'
+import { validateFields } from '../utils/validation'
 
-export const Form = (props) => {
-  const [isSubmitted, setIsSubmitted] = React.useState(false)
+export const Form = () => {
 
-  const submit = () => {
-    setIsSubmitted(true)
+  const [submission, setSubmission] = React.useState(false)
+  const [firstName, setFirstName] = React.useState('')
+  const [email, setEmail] = React.useState('')
+  const [password, setPassword] = React.useState('')
+
+  const handleSubmit = event => {
+    event.preventDefault()
+
+    setSubmission(true)
+  }
+
+  const submit = (e) => {
+    handleSubmit(e)
+
+    validateFields({email, firstName, password})
   }
 
   return (
-    <div>
-      {!isSubmitted ? (
-        <FormFields submit={submit} />
-      ) : (
-        <FormSuccess />
-      )}
-    </div>
+      <SignupContext.Provider value={{
+        email, setEmail,
+        firstName, setFirstName,
+        password, setPassword,
+        submission, setSubmission,
+        handleSubmit, submit
+      }}>
+        {!submission ? (
+          <FormFields />
+        ) : (
+          <FormSuccess />
+        )}
+      </SignupContext.Provider>
   )
 }
