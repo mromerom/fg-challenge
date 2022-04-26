@@ -18,7 +18,7 @@ export const validateName = (values, errors) => {
 export const validateEmail = (values, errors) => {
   // Willful violation of RFC 5322 to accept addresses valid in real-world use
   // For more info: https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address 
-  const regex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+  const regex = /[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*/
 
 
   if (!values.email) {
@@ -31,7 +31,7 @@ export const validateEmail = (values, errors) => {
 }
 
 export const validatePassword = (values, errors) => {
-  const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,64}$/i
+  const regex = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@#$!%*?&()\[\]{}`~\-\_=+'";:,<.>/?\\|]{8,64}/
 
   if (!values.password) {
     errors.password = 'Please create a password.'
