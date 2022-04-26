@@ -1,37 +1,49 @@
-import React from 'react'
+// import React from 'react'
+// import { FormFields } from '../components/form-fields'
 
-export const useInput = (callback, validate) => {
-  const [values, setValues] = React.useState({
-    firstName: '',
-    email: '',
-    password: '',
-  })
+// export const FormFieldsContext = React.createContext()
 
-  const [errors, setErrors] = React.useState({})
-  const [submission, setSubmission] = React.useState(false)
+// // export const useInput = (callback, validate) => {
+// export const useInput = (callback, validate, props) => {
+//   const { children } = props
 
-  const handleChange = event => {
-    const { name, value } = event.target
+//   const [values, setValues] = React.useState({
+//     firstName: '',
+//     email: '',
+//     password: '',
+//   })
 
-    setValues({
-      ...values,
-      [name]: value
-    })
-  }
+//   const [errors, setErrors] = React.useState({})
+//   const [submission, setSubmission] = React.useState(false)
 
-  const handleSubmit = event => {
-    event.preventDefault()
+//   const handleChange = event => {
+//     const { name, value } = event.target
 
-    setErrors(validate(values))
-    setSubmission(true)
-  }
+//     setValues({
+//       ...values,
+//       [name]: value
+//     })
+//   }
 
-  React.useEffect(() => {
-    // if there are no errors and we submit, revalidate inputs
-    if (Object.keys(errors).length === 0 && submission) {
-      callback()
-    }
-  }, [errors, callback, submission])
+//   const handleSubmit = event => {
+//     event.preventDefault()
 
-  return { errors, handleChange, handleSubmit, values }
-}
+//     setErrors(validate(values))
+//     setSubmission(true)
+//   }
+
+//   React.useEffect(() => {
+//     // if there are no errors and we submit, revalidate inputs
+//     if (Object.keys(errors).length === 0 && submission) {
+//       callback()
+//     }
+//   }, [errors, callback, submission])
+
+//   const stateValues = { errors, handleChange, handleSubmit, values }
+
+//   return (
+//     <FormFieldsContext.Provider values={stateValues}>
+//       {children}
+//     </FormFieldsContext.Provider>
+//   )
+// }
