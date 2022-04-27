@@ -1,12 +1,10 @@
 import React from 'react'
 import { Input } from './input'
 import { Button } from './button'
-
-import * as validation from '../utils/validation'
 import { SignupContext } from '../contexts/signup-context'
 
 export const FormFields = () => {
-  const { email, setEmail, errors, firstName, setFirstName, password, setPassword, handleChange, handleSubmit, submit, values, setValues, disabled} = React.useContext(SignupContext)
+  const { email, setEmail, firstName, setFirstName, password, setPassword, handleSubmit } = React.useContext(SignupContext)
 
   const nameValidation = {
     regex: "[a-zA-Z\xC0-\uFFFF' -]{1,25}",
@@ -14,6 +12,8 @@ export const FormFields = () => {
   }
 
   const emailValidation = {
+    // Willful violation of RFC 5322 to accept addresses valid in real-world use
+    // For more info: https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address
     regex: "[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*",
     // email fields have a default message built in
   }
@@ -36,7 +36,6 @@ export const FormFields = () => {
             You're only a few steps away!
           </p>
         </div>
-        {errors.firstName && <p className='form--error'>{errors.firstName}</p>}
         <Input
           field='firstName'
           labelText='First Name'
@@ -47,7 +46,6 @@ export const FormFields = () => {
           required
           title={nameValidation.message}
         />
-        {errors.email && <p className='form--error'>{errors.email}</p>}
         <Input
           field='email'
           labelText='Email Address'
@@ -57,7 +55,6 @@ export const FormFields = () => {
           pattern={emailValidation.regex}
           required
         />
-        {errors.password && <p className='form--error'>{errors.password}</p>}
         <Input
           field='password'
           labelText='Password'
