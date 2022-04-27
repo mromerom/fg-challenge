@@ -6,8 +6,8 @@ export const FormSuccess = (props) => {
   const { email, firstName } = React.useContext(SignupContext)
 
   return (
-    <div>
-      <form className='form--wrapper'>
+    <div className='app--wrapper'>
+      <form className='success--wrapper'>
         <div className='form--text'>
           <div className='header--wrapper'>
             <span>Welcome,</span>

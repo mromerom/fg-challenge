@@ -3,6 +3,19 @@ html {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+.app--wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
 .composed-input {
   display: flex;
   flex-direction: column;
@@ -16,27 +29,42 @@ html {
   margin-bottom: 15px;
 }
 
-.form--wrapper {
+.form--wrapper,
+.success--wrapper {
   background: rgb(255, 255, 255);
   border-radius: .75rem;
   display: flex;
   filter: drop-shadow(0 0 0.75rem rgb(227, 225, 226));
   flex-direction: column;
-  max-width: 700px;
   padding: 2rem;
+}
+
+.form--wrapper {
+  max-width: 400px;
+}
+
+.success--wrapper {
+  margin-left: 10px;
+  margin-right: 10px;
+  max-width: 366px;
+}
+
+.form--text span {
+  font-size: .9rem;
+  font-weight: bold;
 }
 
 .header--wrapper {
   margin-bottom: 2.5rem;
 }
 
-.form--text span {
+.header--wrapper span {
   font-size: 2rem;
   font-weight: 400;
   line-height: 1;
 }
 
-.form--text h1 {
+.header--wrapper h1 {
   line-height: 0;
 }
 
@@ -44,6 +72,16 @@ html {
   font-size: 14px;
   font-weight: 500;
   line-height: 1.5;
+}
+
+.success--wrapper .form--text p {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.success--wrapper .button--submit {
+  margin-top: 1rem;
 }
 
 .form--error {
@@ -70,8 +108,39 @@ html {
   padding: 10px 20px 10px 20px;
 }
 
+.button--submit:disabled {
+  background-color: lightgray;
+}
+
 @media (max-width: 584px) {
   .form--wrapper {
     max-width: 100%;
+  }
+
+  .success--wrapper {
+    bottom: 0;
+    margin-left: 0px;
+    margin-right: 0px;
+    max-width: 100%;
+    position: absolute;
+    top: 0;
+  }
+
+  .success--wrapper .button--submit {
+    margin-top: 13rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .success--wrapper {
+    bottom: 0;
+    margin-left: 0px;
+    margin-right: 0px;
+    position: absolute;
+    top: 0;
+  }
+
+  .success--wrapper .button--submit {
+    margin-top: 11rem;
   }
 }

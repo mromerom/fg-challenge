@@ -24,7 +24,7 @@ export const FormFields = () => {
   }
 
   return (
-    <div>
+    <div className='app--wrapper'>
       <form className='form--wrapper' onSubmit={handleSubmit}>
         <div className='form--text'>
           <div className='header--wrapper'>
