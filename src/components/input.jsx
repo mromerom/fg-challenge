@@ -1,6 +1,4 @@
-import { validateFields } from '../utils/validation'
 import React from 'react'
-import { useInput } from '../utils/useInput'
 
 export const Input = (props) => {
   
@@ -11,7 +9,8 @@ export const Input = (props) => {
     labelText,
     type,
     onChange,
-    value
+    value,
+    ...otherProps
   } = props
 
   return (
@@ -26,6 +25,7 @@ export const Input = (props) => {
         type={type}
         onChange={onChange}
         value={value}
+        {...otherProps}
       />
     </div>
   )
