@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from './button'
 import { SignupContext } from '../contexts/signup-context'
 
-export const FormSuccess = (props) => {
+export const FormSuccess = () => {
   const { email, firstName } = React.useContext(SignupContext)
 
   return (
